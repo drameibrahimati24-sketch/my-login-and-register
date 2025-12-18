@@ -1,10 +1,10 @@
 # MultiBlog Platform - Redesigned
 
-A modern, full-featured blog platform built with **Node.js**, **Express**, **Prisma**, and **SQLite/MySQL**. Redesigned with a premium UI/UX and enhanced security features.
+A modern, full-featured blog platform built with **Node.js**, **Express**, **Prisma**, and **SQLite/MySQL**. Redesigned with a  UI/UX and enhanced security features.
 
-## 🚀 Key Features
+##  Key Features
 
-*   **Modern UI/UX**: Premium design system using Vanilla CSS with responsive layouts, "Inter" typography, and micro-interactions.
+*   **Modern UI/UX**:  design system using Vanilla CSS with responsive layouts, "Inter" typography, and micro-interactions.
 *   **MultiBlog System**:
     *   **Public Feed**: "MultiBlog" home view shows articles from all authors.
     *   **Personal Feed**: "My Articles" view to manage your own content.
@@ -17,25 +17,25 @@ A modern, full-featured blog platform built with **Node.js**, **Express**, **Pri
     *   Role-based access control (Admin vs Member).
     *   Ownership verification for editing/deleting articles.
 
-## 📸 Screenshots
+## Screenshots
 
 ### Home Page (MultiBlog Feed)
-![Home Page](clean-app/screenshots/Slide1.JPG)
+![Home Page](clean-app/Presentation1/Slide1.JPG)
 
 ### Article Detail View
-![Article Detail](clean-app/screenshots/Slide2.JPG)
+![Article Detail](clean-app/Presentation1/Slide2.JPG)
 
 ### My Articles
-![My Articles](clean-app/screenshots/Slide3.JPG)
+![My Articles](clean-app/Presentation1/Slide3.JPG)
 
 ### Admin Dashboard
-![Admin Dashboard](clean-app/screenshots/Slide4.JPG)
+![Admin Dashboard](clean-app/Presentation1/Slide4.JPG)
 
 ### User Profile
-![User Profile](clean-app/screenshots/Slide5.JPG)
+![User Profile](clean-app/Presentation1/Slide5.JPG)
 
 ### Editor with Image Upload
-![Editor](clean-app/screenshots/Slide6.JPG)
+![Editor](clean-app/Presentation1/Slide6.JPG)
 
 ## 🛠 Tech Stack
 
@@ -45,7 +45,7 @@ A modern, full-featured blog platform built with **Node.js**, **Express**, **Pri
 *   **Auth**: Sessions, Bcrypt
 *   **Uploads**: Multer
 
-## 📦 Installation
+##  Installation
 
 1.  Clone the repository:
     ```bash
@@ -70,10 +70,7 @@ A modern, full-featured blog platform built with **Node.js**, **Express**, **Pri
     npm start
     ```
 
-## 🤝 Contributing
+##  Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## 📄 License
-
-[MIT](https://choosealicense.com/licenses/mit/)
