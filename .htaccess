@@ -1,0 +1,75 @@
+RewriteEngine On
+
+# Handle root directory requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^$ index.php [L]
+
+# Handle login route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^login/?$ login.php [L]
+
+# Handle register route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^register/?$ register.php [L]
+
+# Handle logout route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^logout/?$ logout.php [L]
+
+# Handle articles routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^articles/?$ articles.php [L]
+
+# Handle my-articles route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^my-articles/?$ my-articles.php [L]
+
+# Handle new-article route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^new-article/?$ new-article.php [L]
+
+# Handle article detail route (with ID)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^article/(\d+)/?$ article.php?id=$1 [L]
+
+# Handle article edit route (with ID)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^edit-article/(\d+)/?$ edit-article.php?id=$1 [L]
+
+# Handle delete-article route (with ID)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^delete-article/(\d+)/?$ delete-article.php?id=$1 [L]
+
+# Handle admin route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^admin/?$ admin.php [L]
+
+# Handle user routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^users/?$ users_list.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^user/(\d+)/?$ user_detail.php?id=$1 [L]
+
+# Handle edit profile route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^edit-profile/?$ edit_profile.php [L]
+
+# Handle example protected route
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^protected/?$ example_protected.php [L]

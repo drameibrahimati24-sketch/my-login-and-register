@@ -14,7 +14,28 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  name         String?
+  bio          String?
+  passwordHash String
+  role         Role      @default(MEMBER)
+  articles     Article[]
+  createdAt    DateTime  @default(now())
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  image     String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  MEMBER
 }

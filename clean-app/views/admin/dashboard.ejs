@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <%- include('../layout') %>
+    <div class="page-container">
+      <h1 class="page-title">Admin – Users & Activity</h1>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Articles</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user=> { %>
+            <tr>
+              <td>
+                <%= user.email %>
+              </td>
+              <td>
+                <%= user.name || '-' %>
+              </td>
+              <td>
+                <%= user.role %>
+              </td>
+              <td>
+                <%= user._count.articles %>
+              </td>
+              <td>
+                <div style="display:flex; gap: 0.5rem; align-items:center;">
+                  <form action="/admin/users/<%= user.id %>/role" method="POST"
+                    style="display:inline-flex; gap:0.5rem;">
+                    <select name="role"
+                      style="padding: 0.25rem; border: 1px solid var(--border); border-radius: var(--radius);">
+                      <option value="MEMBER" <%=user.role==='MEMBER' ? 'selected' : '' %>>Member</option>
+                      <option value="ADMIN" <%=user.role==='ADMIN' ? 'selected' : '' %>>Admin</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline"
+                      style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Save</button>
+                  </form>
+                  <% if (currentUser.id !==user.id) { %>
+                    <form action="/admin/users/<%= user.id %>/delete" method="POST"
+                      onsubmit="return confirm('Delete this user? All their articles will be deleted.');"
+                      style="display:inline;">
+                      <button type="submit" class="btn btn-danger"
+                        style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>
+    <%= typeof title !=='undefined' ? title : 'Articles' %>
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <%- include('../layout') %>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="page-title">
+          <%= typeof title !=='undefined' ? title : 'Latest articles' %>
+        </h1>
+        <% if (currentUser) { %>
+          <a href="/articles/new" class="btn btn-primary">Write a story</a>
+          <% } %>
+      </div>
+
+      <% if (!currentUser) { %>
+        <div
+          style="background: #eef2ff; border: 1px solid #c7d2fe; padding: 1rem; border-radius: var(--radius); margin-bottom: 2rem; color: #3730a3;">
+          You are exploring as a guest. <a href="/auth/login" style="text-decoration: underline; font-weight: 600;">Sign
+            in</a> to write your own stories.
+        </div>
+        <% } %>
+
+          <ul class="articles-list">
+            <% if (articles.length===0) { %>
+              <li style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
+                No articles found. <% if(currentUser) { %> <a href="/articles/new"
+                    style="color: var(--primary); font-weight: 600;">Write one?</a>
+                  <% } %>
+              </li>
+              <% } %>
+                <% articles.forEach(article=> { %>
+                  <li>
+                    <a href="/articles/<%= article.id %>" class="article-card"
+                      style="display: flex; flex-direction: column; overflow: hidden; padding: 0;">
+                      <% if (article.image) { %>
+                        <div style="height: 200px; width: 100%; overflow: hidden;">
+                          <img src="<%= article.image %>" alt="<%= article.title %>"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <% } %>
+                          <div style="padding: 1.5rem;">
+                            <h2 class="article-title">
+                              <%= article.title %>
+                            </h2>
+                            <div class="article-meta">
+                              <span>
+                                By <strong>
+                                  <%= article.author ? (article.author.name || article.author.email || ('User #' +
+                                    article.author.id)) : 'Unknown' %>
+                                </strong>
+                              </span>
+                              <span>•</span>
+                              <span>
+                                <%= new Date(article.createdAt).toLocaleDateString(undefined, { year: 'numeric' ,
+                                  month: 'long' , day: 'numeric' }) %>
+                              </span>
+                            </div>
+                            <p class="article-excerpt">
+                              <%= (article.content || '' ).length> 200 ? article.content.slice(0, 200) + '…' :
+                                article.content
+                                %>
+                            </p>
+                          </div>
+                    </a>
+                  </li>
+                  <% }) %>
+          </ul>
+    </div>
+</body>
+
+</html>

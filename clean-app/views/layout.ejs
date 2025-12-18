@@ -1,0 +1,40 @@
+<header class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="/" class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        MultiBlog
+      </a>
+      <a href="/" class="nav-link">Home</a>
+      <% if (currentUser) { %>
+        <a href="/articles/mine" class="nav-link">My Articles</a>
+        <% } %>
+          <% if (currentUser && currentUser.role==='ADMIN' ) { %>
+            <a href="/admin" class="nav-link">Admin</a>
+            <% } %>
+    </div>
+    <div class="nav-right">
+      <% if (currentUser) { %>
+        <span class="nav-user">
+          Logged in as <strong>
+            <%= currentUser.name || currentUser.email %>
+          </strong>
+          <% if(currentUser.role==='ADMIN' ) { %> <span
+              style="color:var(--primary); font-size: 0.75rem; text-transform:uppercase; font-weight:700;">Admin</span>
+            <% } %>
+        </span>
+        <a href="/profile" class="nav-link" style="font-size: 0.875rem;">Profile</a>
+        <form action="/auth/logout" method="POST" class="nav-form" style="margin:0;">
+          <button type="submit" class="btn btn-outline" style="padding: 0.4rem 0.8rem;">Logout</button>
+        </form>
+        <% } else { %>
+          <a href="/auth/login" class="nav-link">Sign in</a>
+          <a href="/auth/register" class="btn btn-primary">Get started</a>
+          <% } %>
+    </div>
+  </div>
+</header>
