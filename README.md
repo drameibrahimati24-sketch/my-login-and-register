@@ -20,22 +20,22 @@ A modern, full-featured blog platform built with **Node.js**, **Express**, **Pri
 ## 📸 Screenshots
 
 ### Home Page (MultiBlog Feed)
-![Home Page](Presentation/Presentation1/Slide1.JPG)
+![Home Page](clean-app/screenshots/Slide1.JPG)
 
 ### Article Detail View
-![Article Detail](Presentation/Presentation1/Slide2.JPG)
+![Article Detail](clean-app/screenshots/Slide2.JPG)
 
 ### My Articles
-![My Articles](Presentation/Presentation1/Slide3.JPG)
+![My Articles](clean-app/screenshots/Slide3.JPG)
 
 ### Admin Dashboard
-![Admin Dashboard](Presentation/Presentation1/Slide4.JPG)
+![Admin Dashboard](clean-app/screenshots/Slide4.JPG)
 
 ### User Profile
-![User Profile](Presentation/Presentation1/Slide5.JPG)
+![User Profile](clean-app/screenshots/Slide5.JPG)
 
 ### Editor with Image Upload
-![Editor](Presentation/Presentation1/Slide6.JPG)
+![Editor](clean-app/screenshots/Slide6.JPG)
 
 ## 🛠 Tech Stack
 
