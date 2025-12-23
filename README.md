@@ -55,8 +55,7 @@ MovieIBR is a premium movie discovery platform that mimics the YTS experience. I
 -   `public/`: Static assets (HTML, CSS, JS).
 
 ## Screenshots
-
-Slide1.PNG
-Slide2.PNG
-Slide3.PNG
-Slide4.PNG
+my-login-and-register/Slide1.PNG
+my-login-and-register/Slide2.PNG
+my-login-and-register/Slide3.PNG
+my-login-and-register/Slide4.PNG
