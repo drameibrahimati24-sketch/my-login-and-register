@@ -1,0 +1,94 @@
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:px-6">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 class="text-3xl font-bold leading-6 text-indigo-700 mb-2">
+                    <%= job.title %>
+                </h3>
+                <p class="mt-1 max-w-2xl text-xl text-gray-500">
+                    <%= job.company %>
+                </p>
+            </div>
+            <div>
+                <% if (job.workType) { %>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
+                    <%= job.workType === 'Remote' ? 'bg-purple-100 text-purple-800' : 
+                        job.workType === 'Hybrid' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800' %>">
+                        <%= job.workType %>
+                    </span>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Location
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <%= job.location %>
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Salary
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <%= job.salary %>
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Posted Date
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <%= new Date(job.createdAt).toLocaleDateString() %>
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Description
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 whitespace-pre-line">
+                    <%= job.description %>
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Requirements
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 whitespace-pre-line">
+                    <%= job.requirements %>
+                </dd>
+            </div>
+        </dl>
+    </div>
+</div>
+
+<div class="flex justify-end gap-4">
+    <a href="/" class="bg-gray-100 text-gray-800 px-6 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors">
+        Back to Jobs
+    </a>
+    <% if (typeof user !=='undefined' && user) { %>
+        <% if (applied) { %>
+            <button disabled
+                class="bg-gray-400 text-white px-8 py-3 rounded-md font-medium cursor-not-allowed shadow-md">
+                Application Submitted
+            </button>
+            <% } else { %>
+                <form action="/member/apply" method="POST">
+                    <input type="hidden" name="jobId" value="<%= job.id %>">
+                    <button type="submit"
+                        class="bg-indigo-600 text-white px-8 py-3 rounded-md font-medium hover:bg-indigo-700 shadow-lg transform hover:scale-105 transition-all">
+                        Apply Now
+                    </button>
+                </form>
+                <% } %>
+                    <% } else { %>
+                        <a href="/auth/login"
+                            class="bg-indigo-600 text-white px-8 py-3 rounded-md font-medium hover:bg-indigo-700 shadow-lg">
+                            Login to Apply
+                        </a>
+                        <% } %>
+</div>

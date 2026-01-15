@@ -1,0 +1,159 @@
+<!-- Hero Section -->
+<div class="bg-indigo-700 rounded-2xl shadow-xl overflow-hidden mb-8 relative">
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-800 to-purple-800 opacity-90"></div>
+    <div class="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl mb-4">
+            Discover Tech Jobs in
+            <span class="block text-indigo-200">Southeast Asia</span>
+        </h1>
+        <p class="mt-3 max-w-md mx-auto text-base text-indigo-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            From Singapore to Jakarta, find the best opportunities in the region's fastest-growing tech hubs.
+        </p>
+    </div>
+</div>
+
+<div class="flex flex-col md:flex-row gap-8">
+    <!-- Filters Sidebar -->
+    <div class="w-full md:w-64 flex-shrink-0">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-6">
+            <h3 class="text-lg font-medium text-gray-900 border-b pb-2 mb-4">Filters</h3>
+
+            <form action="/" method="GET">
+                <!-- Search -->
+                <div class="mb-6">
+                    <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Keywords</label>
+                    <input type="text" name="search" id="search"
+                        value="<%= typeof filters !== 'undefined' ? filters.search : '' %>"
+                        placeholder="Title, Company, Location"
+                        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+
+                <!-- Work Type -->
+                <div class="mb-6">
+                    <h4 class="text-sm font-medium text-gray-700 mb-2">Work Type</h4>
+                    <div class="space-y-2">
+                        <% const types=['Remote', 'Hybrid' , 'Onsite' ]; %>
+                            <% types.forEach(type=> { %>
+                                <div class="flex items-center">
+                                    <input id="type-<%= type %>" name="type" value="<%= type %>" type="checkbox"
+                                        <%=(typeof filters !=='undefined' && filters.type &&
+                                        filters.type.includes(type)) ? 'checked' : '' %>
+                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                    <label for="type-<%= type %>" class="ml-2 block text-sm text-gray-700">
+                                        <%= type %>
+                                    </label>
+                                </div>
+                                <% }); %>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Apply Filters
+                </button>
+                <a href="/"
+                    class="block text-center mt-3 text-sm text-indigo-600 hover:text-indigo-500 font-medium">Clear
+                    All</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Job List -->
+    <div class="flex-1">
+        <div class="md:flex md:items-center md:justify-between mb-6">
+            <div class="flex-1 min-w-0">
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+                    Latest Opportunities
+                </h2>
+                <p class="text-sm text-gray-500 mt-1">Showing <%= jobs.length %> jobs</p>
+            </div>
+        </div>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+            <ul role="list" class="divide-y divide-gray-200">
+                <% if (typeof jobs !=='undefined' && jobs && jobs.length> 0) { %>
+                    <% jobs.forEach(function(job) { %>
+                        <li class="hover:bg-gray-50 transition duration-150 ease-in-out group">
+                            <a href="/jobs/<%= job.id %>" class="block focus:outline-none">
+                                <div class="px-4 py-4 sm:px-6">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <p
+                                                class="text-lg font-medium text-indigo-600 truncate group-hover:text-indigo-800 transition-colors">
+                                                <%= job.title %>
+                                            </p>
+                                            <% if (job.workType) { %>
+                                                <span
+                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                <%= job.workType === 'Remote' ? 'bg-purple-100 text-purple-800' : 
+                                   job.workType === 'Hybrid' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800' %>">
+                                                    <%= job.workType %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+
+                                        <div class="ml-2 flex-shrink-0 flex">
+                                            <p
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                <%= job.status || 'Active' %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 sm:flex sm:justify-between">
+                                        <div class="sm:flex">
+                                            <p class="flex items-center text-sm text-gray-500 mr-6">
+                                                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4zm3 1h6v4H7V5zm13 10a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2a1 1 0 011-1h2a1 1 0 011 1v2zm-1-4a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2a1 1 0 011-1h2a1 1 0 011 1v2z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <%= job.company %>
+                                            </p>
+                                            <p class="flex items-center text-sm text-gray-500">
+                                                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <%= job.location %>
+                                            </p>
+                                        </div>
+                                        <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                                            <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <%= job.salary %>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500 line-clamp-2">
+                                        <%= job.description %>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <% }); %>
+                            <% } else { %>
+                                <li class="px-4 py-12 text-center text-gray-500">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                                        viewBox="0 0 48 48">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2 2l16 16m-6-6l-4-4m-6-16h24v24h-12" />
+                                    </svg>
+                                    <p class="mt-4 text-lg">No job vacancies found matching your criteria.</p>
+                                    <a href="/"
+                                        class="mt-2 inline-block text-indigo-600 hover:text-indigo-500 font-medium">Clear
+                                        all filters</a>
+                                </li>
+                                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>

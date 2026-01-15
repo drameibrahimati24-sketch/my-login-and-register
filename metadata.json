@@ -1,0 +1,5 @@
+{
+  "name": "JobNexus",
+  "description": "A modern, role-based job portal featuring secure JSON authentication, public job summaries, member-exclusive detailed views and applications, and admin-managed vacancies enhanced by AI-powered job description generation.",
+  "requestFramePermissions": []
+}

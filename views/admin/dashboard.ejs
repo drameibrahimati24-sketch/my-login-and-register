@@ -1,0 +1,47 @@
+<div class="md:flex md:items-center md:justify-between mb-6">
+    <div class="flex-1 min-w-0">
+        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+            Admin Dashboard
+        </h2>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Jobs Card -->
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <dt class="text-sm font-medium text-gray-500 truncate">
+                Total Vacancies
+            </dt>
+            <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                <%= stats.jobs %>
+            </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-4 sm:px-6">
+            <div class="text-sm">
+                <a href="/admin/vacancies" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Manage vacancies
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users Card -->
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <dt class="text-sm font-medium text-gray-500 truncate">
+                Total Users
+            </dt>
+            <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                <%= stats.users %>
+            </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-4 sm:px-6">
+            <div class="text-sm">
+                <a href="/admin/users" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Manage Users
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
