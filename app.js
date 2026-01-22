@@ -36,6 +36,9 @@ app.use('/admin', adminRouter);
 const memberRouter = require('./routes/public/member');
 app.use('/member', memberRouter);
 app.use('/', publicJobsRouter);
+const studentApiRouter = require('./routes/api/student');
+app.use('/api/students', studentApiRouter);
+
 // app.use('/api/auth', authApiRouter);
 
 // Catch 404 and forward to error handler

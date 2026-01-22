@@ -32,3 +32,12 @@ model JobVacancy {
   createdBy    Int
   creator      User     @relation(fields: [createdBy], references: [id])
 }
+
+model Student {
+  id     Int    @id @default(autoincrement())
+  nama   String
+  umur   Int
+  alamat String
+
+  @@map("tbl_siswa")
+}
